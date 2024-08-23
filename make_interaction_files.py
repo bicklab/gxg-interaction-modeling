@@ -29,6 +29,7 @@ with open("batch_file.txt") as file, open(output_file, "w") as outfile:
         cmd = f'''dx run app-regenie \
             --priority low \
             --instance-type "mem1_ssd1_v2_x36" \
+            --tag="chr{chr}_{args.pheno_name}_{args.covariate_name}" \
             -iwgr_genotype_bed="file-GgbZ2j8JK90fK3XY9GjQpJ9J" \
             -iwgr_genotype_bim="file-GgbZ2j8JK90vfYpq1X91jjVg" \
             -iwgr_genotype_fam="file-GgbZ2j8JK90zP4QY0FPvg2z0" \
