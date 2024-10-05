@@ -171,4 +171,4 @@ plink2 \
 5. Make epistasis plots.
 
 ## Power calculations
-Code in Epistasis power calculations notebook
+Code in [this notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/Epistasis%20power%20calculations.ipynb)
