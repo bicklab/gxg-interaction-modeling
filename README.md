@@ -7,6 +7,7 @@ This repository contains the code and analysis scripts for Pershad & Poisner et 
 2. [Gene-specific Variance QTL Scan (dglm)](#gene-specific-variance-qtl-scan-dglm)
 3. [Gene-Gene Interaction Testing (gxg)](#gene-gene-interaction-testing-gxg)
 4. [Power Calculations](#power-calculations)
+5. [Lollipop Plots](#lollipop-plots)
 
 ## Genome-wide Variance QTL Scan (Scale test)
 
@@ -186,6 +187,9 @@ plink2 \
 ## Power Calculations
 
 Code available in: [Epistasis power calculations notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/Epistasis%20power%20calculations.ipynb)
+
+## Lollipop Plots
+Code available in [Lollipop notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/trackviewer_lollipop.ipynb)
 
 ## Dependencies
 - [Regenie v3.3](https://rgcgithub.github.io/regenie)
