@@ -11,7 +11,7 @@ Github repo for Pershad & Poisner et al, medRxiv, 2024. https://doi.org/10.1101/
 
 ## Genome-wide variance QTL scan (Scale test)
 
-Functions in [vGWAS notebook]([url](https://github.com/bicklab/gxg-interaction-modeling/blob/main/vGWAS_code.ipynb))
+Functions in [vGWAS notebook]([https://github.com/bicklab/gxg-interaction-modeling/blob/main/vGWAS_code.ipynb]))
 
 1. Inverse normal transform traits
 2. Calculate residual and square it
