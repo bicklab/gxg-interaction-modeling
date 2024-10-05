@@ -6,20 +6,20 @@ Github repo for Pershad & Poisner et al, medRxiv, 2024. https://doi.org/10.1101/
 <!--ts-->
    * [Genome-wide variance QTL scan (Scale test)](#scale)
    * [Gene-specific variance QTL scan (dglm)](#dglm)
-   * [Gene-gene interaction testing](#gxg)
+   * [Gene-gene interaction testing (gxg)](#gxg)
 <!--te-->
 
-Genome-wide variance QTL scan (Scale test)
+## Genome-wide variance QTL scan (Scale test)
+=====
+### Prepare trait for vGWAS
+
+
+
+## Gene-specific variance QTL scan (dglm)
 =====
 
 
-
-
-Gene-specific variance QTL scan (dglm)
-=====
-
-
-Gene-gene interaction testing (gxg)
+## Gene-gene interaction testing (gxg)
 =====
 
 
