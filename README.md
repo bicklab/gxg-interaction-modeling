@@ -94,6 +94,7 @@ regenie \
 
 
 ## Gene-specific variance QTL scan (dglm)
+Functions in [dglm notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/dglm_notebook.ipynb).
 1. Extract variants in gene of interest with minor allele frequency > 10% using plink2 on the UK Biobank DNA Nexus Research Analysis Platform.
 ```
 # Example for variants in HFE
@@ -107,8 +108,8 @@ plink2 \
 --export vcf \
 --out hfe_snps
 ```
-
-2.
+2. Using dglm v.1.8.6 in R version 4.4.0, run dglm and filter for significant dispersion P values (0.05/number of variants in the gene with minor allele frequency > 10%). The models were adjusted for age at blood draw, age at blood draw2, sex, genetic ancestry, and the first 5 genotyping principal components.
+3. Run GxG interaction model (Section 3)
 
 ## Gene-gene interaction testing (gxg)
 Functions in [gene-gene-interaction notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/gene-gene-interaction_code.ipynb).
