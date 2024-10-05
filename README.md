@@ -188,7 +188,7 @@ plink2 \
 Code available in: [Epistasis power calculations notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/Epistasis%20power%20calculations.ipynb)
 
 ## Dependencies
-- Regenie v3.3
+- [Regenie v3.3](https://rgcgithub.github.io/regenie)
 - plink2
 - R v4.4.0
 - dglm v1.8.6
@@ -212,6 +212,9 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Acknowledgements
+This work was supported by NIH grant DP5 OD029586, a Burroughs Wellcome Fund Career Award for Medical Scientists, an E.P. Evans Foundation grant, a RUNX1 Research Program grant, a Pew Charitable Trusts and Alexander and Margaret Stewart Trust Pew-Stewart Scholar for Cancer Research award, a Vanderbilt University Medical Center Brock Family Endowment grant, and a Young Ambassador Award (A.G.B.), NIH grant T32 GM007347 (Y.P.), NIH grant K12 AR084232 (J.N.H), and Arthritis National Research Foundation grant 128808 (R.W.C.). We would also like to acknowledge DNANexus for providing cloud compute credits.
 
 ## Contact
 Yash Pershad, yash.pershad@vanderbilt.edu
