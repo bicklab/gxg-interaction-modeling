@@ -97,7 +97,52 @@ regenie \
 
 
 ## Gene-gene interaction testing (gxg)
+Code in gene-gene interaction notebook.
 
+1. Run genome wide association study with Regenie v3.3 on the UK Biobank DNA Nexus Research Analysis Platform.
+```
+# Example Regenie interaction step 1 for lymphocyte count and variance quantitative trait loci rs3819720 for chr5
+regenie \
+--step 1 \
+--bed ukb_imp_step1 \
+--phenoFile rs3819720_lymph_interaction_phenocov.tsv \
+--bsize 1000 \
+--use-relative-path \
+--extract /home/dnanexus/PACER_UKB_GWAS_step1QC_plink_mac5000_thinned.snplist \
+--covarFile rs3819720_lymph_interaction_phenocov.tsv \
+--phenoColList lymph \
+--covarColList baseline_age,age2,PC1,PC2,PC3,PCD4,PC5,PC6,PC7,PC8,PC9,PC10,rs3819720 \
+--catCovarList genetic_sex \
+--apply-rint \
+--out lymph_rs3819720
 
+# Example Regenie interaction step 2 for lymphocyte count and variance quantitative trait loci rs3819720 for chr5
+regenie \
+--step 2 \
+--bgen ukb22828_c5_b0_v3.bgen \
+--phenoFile rs3819720_lymph_interaction_phenocov.tsv \
+--bsize 200 \
+--pThresh 0.05 \
+--test additive \
+--pred lymph_rs3819720_pred.list \
+--gz \
+--sample ukb22828_c5_b0_v3.sample \
+--extract /home/dnanexus/imputed_UKB_GWAS_step2QC_plink_maf0.001_geno0.1_chr5.snplist \
+--covarFile rs3819720_lymph_interaction_phenocov.tsv \
+--firth \
+--approx \
+--firth-se \
+--phenoColList lymph \
+--covarColList baseline_age,age2,PC1,PC2,PC3,PCD4,PC5,PC6,PC7,PC8,PC9,PC10,rs3819720 \
+--catCovarList genetic_sex \
+--apply-rint \
+--interaction rs3819720 \
+--ref-first \
+--htp ukb22828_c5_b0_v3 \
+--out lymph_rs3819720_ukb22828_c5_b0_v3
+```
+2. Find significant interactors (Test = ADDx
+3. Extract SNPs which are significant.
+4. Make epistasis plot.
 
 
