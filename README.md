@@ -7,7 +7,7 @@ Github repo for Pershad & Poisner et al, MedRXiv, 2024. https://doi.org/10.1101/
    * [Scale test](#scale)
 <!--te-->
 
-scale
+Scale
 =====
 
 
