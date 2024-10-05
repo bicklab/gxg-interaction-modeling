@@ -108,8 +108,10 @@ plink2 \
 --out hfe_snps
 ```
 
+2.
+
 ## Gene-gene interaction testing (gxg)
-Code in [gene-gene-interaction notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/gene-gene-interaction_code.ipynb).
+Functions in [gene-gene-interaction notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/gene-gene-interaction_code.ipynb).
 
 1. Run genome wide association study with Regenie v3.3 on the UK Biobank DNA Nexus Research Analysis Platform.
 ```
@@ -168,3 +170,5 @@ plink2 \
 ```
 5. Make epistasis plots.
 
+## Power calculations
+Code in Epistasis power calculations notebook
