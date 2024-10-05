@@ -1,14 +1,27 @@
-# Variance quantitative trait loci reveal gene-gene interactions which alter blood traits
+# Variance Quantitative Trait Loci Reveal Gene-Gene Interactions Altering Blood Traits
 
-Github repo for Pershad & Poisner et al, medRxiv, 2024. https://doi.org/10.1101/2024.09.18.24313883.
+This repository contains the code and analysis scripts for Pershad & Poisner et al, medRxiv, 2024. https://doi.org/10.1101/2024.09.18.24313883
 
-## Genome-wide variance QTL scan (Scale test)
+## Table of Contents
+1. [Genome-wide Variance QTL Scan (Scale test)](#genome-wide-variance-qtl-scan-scale-test)
+2. [Gene-specific Variance QTL Scan (dglm)](#gene-specific-variance-qtl-scan-dglm)
+3. [Gene-Gene Interaction Testing (gxg)](#gene-gene-interaction-testing-gxg)
+4. [Power Calculations](#power-calculations)
+
+## Genome-wide Variance QTL Scan (Scale test)
+
+Code available in: [vGWAS notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/vGWAS_code.ipynb)
+
+### Workflow:
+1. Inverse normal transform traits
+2. Calculate residual and square it
+3. Run genome-wide association study with Regenie v3.3 on the UK Biobank DNA Nexus Research Analysis Platform
+4. Select SNPs with genome-wide significant association with trait variance (P < 5x10^-8) without significant mean effect (P > 5x10^-8)
+5. Run GxG interaction model (See Section 3)
 
 Functions in [vGWAS notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/vGWAS_code.ipynb)
 
-1. Inverse normal transform traits
-2. Calculate residual and square it
-3. Run genome wide association study with Regenie v3.3 on the UK Biobank DNA Nexus Research Analysis Platform on both rank-inverse normalized trait (mean) and square of the residual of the rank-inverse-normalized trait (variance). Covariates were age at blood draw, age at blood draw2, sex, genetic ancestry, and the first 5 genotyping principal components.
+### Example Regenie Commands:
 ```
 # Example Regenie Step 1 for Lymphocyte Count (Mean) for chr5 
 regenie \
@@ -80,15 +93,18 @@ regenie \
 --catCovarList genetic_sex \
 --ref-first --htp ukb22828_c5_b0_v3 \
 --out lymph_resid_gwas_ukb22828_c5_b0_v3
-
 ```
-5. Select SNPs with if they had a genome-wide significant association with the variance of a trait ($P < 5x10^{-8}$) without a significant mean effect after multiple-hypothesis correction ($P > 5x10^{-8}$).
-6. Run GxG interaction model (Section 3)
 
+## Gene-specific Variance QTL Scan (dglm)
 
-## Gene-specific variance QTL scan (dglm)
-Functions in [dglm notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/dglm_notebook.ipynb).
-1. Extract variants in gene of interest with minor allele frequency > 10% using plink2 on the UK Biobank DNA Nexus Research Analysis Platform.
+Code available in: [dglm notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/dglm_notebook.ipynb)
+
+### Workflow:
+1. Extract variants in gene of interest (MAF > 10%) using plink2
+2. Run dglm (v1.8.6) in R (v4.4.0) and filter for significant dispersion P values
+3. Run GxG interaction model (See Section 3)
+
+### Example plink2 Command:
 ```
 # Example for variants in HFE
 plink2 \
@@ -101,13 +117,18 @@ plink2 \
 --export vcf \
 --out hfe_snps
 ```
-2. Using dglm v.1.8.6 in R version 4.4.0, run dglm and filter for significant dispersion P values (0.05/number of variants in the gene with minor allele frequency > 10%). The models were adjusted for age at blood draw, age at blood draw2, sex, genetic ancestry, and the first 5 genotyping principal components.
-3. Run GxG interaction model (Section 3)
 
-## Gene-gene interaction testing (gxg)
-Functions in [gene-gene-interaction notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/gene-gene-interaction_code.ipynb).
+## Gene-Gene Interaction Testing (gxg)
 
-1. Run genome wide association study with Regenie v3.3 on the UK Biobank DNA Nexus Research Analysis Platform.
+Code available in: [gene-gene-interaction notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/gene-gene-interaction_code.ipynb)
+
+### Workflow:
+1. Run genome-wide association study with Regenie v3.3
+2. Find significant interactors
+3. Extract significant SNPs using plink
+4. Create epistasis plots
+
+### Example Commands:
 ```
 # Example Regenie interaction step 1 for lymphocyte count and variance quantitative trait loci rs3819720 for chr5
 regenie \
@@ -149,8 +170,7 @@ regenie \
 --htp ukb22828_c5_b0_v3 \
 --out lymph_rs3819720_ukb22828_c5_b0_v3
 ```
-2. Find significant interactors (Model = "ADD-WGR-LR-INT_SNPx[SNP])
-3. Extract SNPs which are significant using plink.
+
 ```
 # Example for HFE variant
 plink2 \
@@ -162,7 +182,23 @@ plink2 \
 --export vcf \
 --out hfe_pathogenic_rs1799945_snp
 ```
-5. Make epistasis plots.
 
-## Power calculations
-Code in [this notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/Epistasis%20power%20calculations.ipynb)
+## Power Calculations
+
+Code available in: [Epistasis power calculations notebook](https://github.com/bicklab/gxg-interaction-modeling/blob/main/Epistasis%20power%20calculations.ipynb)
+
+## Dependencies
+- Regenie v3.3
+- plink2
+- R v4.4.0
+- dglm v1.8.6
+
+## Data
+This analysis was performed using the app.Terra.bio and the UK Biobank data on the DNA Nexus Research Analysis Platform.
+
+## Citation
+If you use this code or find it helpful, please cite:
+Pershad & Poisner et al, medRxiv, 2024. https://doi.org/10.1101/2024.09.18.24313883
+
+## Contact
+Yash Pershad, yash.pershad@vanderbilt.edu
