@@ -94,10 +94,23 @@ regenie \
 
 
 ## Gene-specific variance QTL scan (dglm)
-
+1. Extract variants in gene of interest with minor allele frequency > 10% using plink2 on the UK Biobank DNA Nexus Research Analysis Platform.
+```
+# Example for variants in HFE
+plink2 \
+--bgen ukb22828_c6_b0_v3.bgen \
+ref-first \
+--sample ukb22828_c6_b0_v3.sample \
+--chr 6 \
+--from-bp 26087657 \
+--to-bp 26098571 \
+--maf 0.1 \
+--export vcf \
+--out hfe_snps
+```
 
 ## Gene-gene interaction testing (gxg)
-Code in gene-gene interaction notebook.
+Code in gene-gene-interaction notebook.
 
 1. Run genome wide association study with Regenie v3.3 on the UK Biobank DNA Nexus Research Analysis Platform.
 ```
@@ -141,8 +154,9 @@ regenie \
 --htp ukb22828_c5_b0_v3 \
 --out lymph_rs3819720_ukb22828_c5_b0_v3
 ```
-2. Find significant interactors (Test = ADDx
-3. Extract SNPs which are significant.
-4. Make epistasis plot.
+2. Find significant interactors (Model = "ADD-WGR-LR-INT_SNPx[SNP])
+3. Extract SNPs which are significant using plink.
+
+5. Make epistasis plot.
 
 
