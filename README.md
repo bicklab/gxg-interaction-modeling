@@ -194,7 +194,7 @@ Code available in: [Epistasis power calculations notebook](https://github.com/bi
 - dglm v1.8.6
 
 ## Data
-This analysis was performed using the app.Terra.bio and the UK Biobank data on the DNA Nexus Research Analysis Platform.
+This analysis was performed using the Terra.bio and the UK Biobank data on the [DNA Nexus Research Analysis Platform] (https://ukbiobank.dnanexus.com). Replication analysis was performed in 1) the BioVU app.Terra.bio environment and 2) the [All of Us Research Workbench](https://workbench.researchallofus.org/).
 
 ## Citation
 If you use this code or find it helpful, please cite:
