@@ -98,8 +98,7 @@ regenie \
 ```
 # Example for variants in HFE
 plink2 \
---bgen ukb22828_c6_b0_v3.bgen \
-ref-first \
+--bgen ukb22828_c6_b0_v3.bgen ref-first \
 --sample ukb22828_c6_b0_v3.sample \
 --chr 6 \
 --from-bp 26087657 \
@@ -156,7 +155,16 @@ regenie \
 ```
 2. Find significant interactors (Model = "ADD-WGR-LR-INT_SNPx[SNP])
 3. Extract SNPs which are significant using plink.
-
-5. Make epistasis plot.
-
+```
+# Example for HFE variant
+plink2 \
+--bgen ukb22828_c6_b0_v3.bgen ref-first \
+--sample ukb22828_c6_b0_v3.sample \
+--chr 6 \
+--from-bp 26091178 \
+--to-bp 26091180 \
+--export vcf \
+--out hfe_pathogenic_rs1799945_snp
+```
+5. Make epistasis plots.
 
