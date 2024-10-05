@@ -15,9 +15,21 @@ Functions in [vGWAS notebook](https://github.com/bicklab/gxg-interaction-modelin
 
 1. Inverse normal transform traits
 2. Calculate residual and square it
-3. Run genome wide association study with Regenie v3.3 on both rank-inverse normalized trait (mean) and square of the residual of the rank-inverse-normalized trait (variance). Covariates were age at blood draw, age at blood draw2, sex, genetic ancestry, and the first 5 genotyping principal components.
+3. Run genome wide association study with Regenie v3.3 on the UK Biobank DNA Nexus Research Analysis Platform on both rank-inverse normalized trait (mean) and square of the residual of the rank-inverse-normalized trait (variance). Covariates were age at blood draw, age at blood draw2, sex, genetic ancestry, and the first 5 genotyping principal components.
 ```
-# Ran on the DNANexus UK Biobank Research Analysis Platform - example below.
+# Example Regenie Step 1 for Lymphocyte Count (Mean) for chr5 
+regenie --step 1 --bed ukb_imp_step1 --phenoFile Users_Yash_Pershad_lymph_vgwas_pheno_cov_v2.tsv --bsize 1000 --use-relative-path --extract /home/dnanexus/PACER_UKB_GWAS_step1QC_plink_mac5000_thinned.snplist --covarFile jak2_plt_interaction_data_yp07152024.tsv --phenoColList lymph_rint --covarColList baseline_age,age2,PC1,PC2,PC3,PCD4,PC5,PC6,PC7,PC8,PC9,PC10 --catCovarList genetic_sex --out lymph_gwas
+
+# Example Regenie Step 2 for Lymphocyte Count (Mean) for chr5
+regenie --step 2 --bgen ukb22828_c12_b0_v3.bgen --phenoFile Users_Yash_Pershad_lymph_vgwas_pheno_cov_v2.tsv --bsize 200 --pThresh 0.05 --test additive --pred lymph_gwas_pred.list --gz --sample ukb22828_c12_b0_v3.sample --extract /home/dnanexus/imputed_UKB_GWAS_step2QC_plink_maf0.001_geno0.1_chr12.snplist --covarFile jak2_plt_interaction_data_yp07152024.tsv --firth --approx --firth-se --phenoColList lymph_rint --covarColList baseline_age,age2,PC1,PC2,PC3,PCD4,PC5,PC6,PC7,PC8,PC9,PC10 --catCovarList genetic_sex --ref-first --htp ukb22828_c12_b0_v3 --out lymph_gwas_ukb22828_c12_b0_v3
+
+# Example Regenie Step 1 for Lymphocyte Count (Variance) for chr5 
+regenie --step 1 --bed ukb_imp_step1 --phenoFile Users_Yash_Pershad_lymph_vgwas_pheno_cov_v2.tsv --bsize 1000 --use-relative-path --extract /home/dnanexus/PACER_UKB_GWAS_step1QC_plink_mac5000_thinned.snplist --covarFile jak2_plt_interaction_data_yp07152024.tsv --phenoColList lymph_rint_resid_sq --covarColList baseline_age,age2,PC1,PC2,PC3,PCD4,PC5,PC6,PC7,PC8,PC9,PC10 --catCovarList genetic_sex --out lymph_resid_gwas
+
+# Example Regenie Step 2 for Lymphocyte Count (Variance) for chr5
+regenie --step 2 --bgen ukb22828_c5_b0_v3.bgen --phenoFile Users_Yash_Pershad_lymph_vgwas_pheno_cov_v2.tsv --bsize 200 --pThresh 0.05 --test additive --pred lymph_resid_gwas_pred.list --gz --sample ukb22828_c5_b0_v3.sample --extract /home/dnanexus/imputed_UKB_GWAS_step2QC_plink_maf0.001_geno0.1_chr5.snplist --covarFile jak2_plt_interaction_data_yp07152024.tsv --firth --approx --firth-se --phenoColList lymph_rint_resid_sq --covarColList baseline_age,age2,PC1,PC2,PC3,PCD4,PC5,PC6,PC7,PC8,PC9,PC10 --catCovarList genetic_sex --ref-first --htp ukb22828_c5_b0_v3 --out lymph_resid_gwas_ukb22828_c5_b0_v3
+
+
 
 ```
 5. Select SNPs with if they had a genome-wide significant association with the variance of a trait ($P < 5x10^{-8}$) without a significant mean effect after multiple-hypothesis correction ($P > 5x10^{-8}$).
