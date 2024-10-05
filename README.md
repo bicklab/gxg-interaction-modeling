@@ -11,5 +11,4 @@ Scale
 =====
 
 
-# Code for Scale test ("vGWAS")
 
